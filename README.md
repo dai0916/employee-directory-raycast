@@ -14,7 +14,7 @@
 ### ワンライナーインストール（推奨）
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/employee-directory-raycast/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/dai0916/employee-directory-raycast/main/install.sh | bash
 ```
 
 ### 手動インストール
@@ -22,7 +22,7 @@ curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/employee-directory-ra
 #### 1. プロジェクトのクローン
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/employee-directory-raycast.git
+git clone https://github.com/dai0916/employee-directory-raycast.git
 cd employee-directory-raycast
 ```
 
@@ -69,7 +69,7 @@ ray build
 
 1. **クイックインストール**:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/employee-directory-raycast/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/dai0916/employee-directory-raycast/main/install.sh | bash
 ```
 
 2. **Raycastでインポート**:

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Employee Directory Raycast Extension - Quick Install Script
-# Usage: curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/employee-directory-raycast/main/install.sh | bash
+# Usage: curl -fsSL https://raw.githubusercontent.com/dai0916/employee-directory-raycast/main/install.sh | bash
 
 set -e
 
@@ -25,7 +25,7 @@ echo "📁 Creating installation directory: $INSTALL_DIR"
 mkdir -p "$INSTALL_DIR"
 
 # Download and extract the latest release
-REPO_URL="https://github.com/YOUR_USERNAME/employee-directory-raycast"
+REPO_URL="https://github.com/dai0916/employee-directory-raycast"
 echo "⬇️  Downloading latest release..."
 cd "$INSTALL_DIR"
 

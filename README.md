@@ -9,16 +9,24 @@
 - **コピー機能**: 各項目をクリップボードにコピー
 - **左右分割UI**: Raycast Clipboard Historyライクなインターフェース
 
-## セットアップ
+## 🚀 クイックインストール
 
-### 1. プロジェクトのクローン
+### ワンライナーインストール（推奨）
 
 ```bash
-git clone <repository-url>
-cd raycast-extension
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/employee-directory-raycast/main/install.sh | bash
 ```
 
-### 2. 依存関係のインストール
+### 手動インストール
+
+#### 1. プロジェクトのクローン
+
+```bash
+git clone https://github.com/YOUR_USERNAME/employee-directory-raycast.git
+cd employee-directory-raycast
+```
+
+#### 2. 依存関係のインストール
 
 ```bash
 # Node.js v22が必要
@@ -32,14 +40,14 @@ npm install
 npm install -g @raycast/api
 ```
 
-### 3. データファイルの準備
+#### 3. データファイルの準備
 
 ```bash
 # サンプルデータをコピー
 cp employee-data.sample.json employee-data.json
 ```
 
-### 4. ビルド
+#### 4. ビルド
 
 ```bash
 # TypeScriptコンパイル
@@ -49,11 +57,30 @@ npx tsc
 ray build
 ```
 
-### 5. Raycastへのインポート
+#### 5. Raycastへのインポート
 
 1. Raycastを開く
 2. `Import Extension`と入力
 3. プロジェクトフォルダを選択
+
+## 📱 別端末での使用
+
+### 新しいMacでの使用方法
+
+1. **クイックインストール**:
+```bash
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/employee-directory-raycast/main/install.sh | bash
+```
+
+2. **Raycastでインポート**:
+   - Raycastを開く
+   - `Import Extension`と入力
+   - `~/.raycast-extensions/employee-directory` を選択
+
+3. **設定の調整**:
+   - Raycast設定でExtension Preferencesを開く
+   - パスを新しい端末用に調整
+   - Google Sheets設定を再設定（必要に応じて）
 
 ## Google Sheets連携設定
 

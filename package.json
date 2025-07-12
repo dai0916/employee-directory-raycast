@@ -1,0 +1,125 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "employee-directory",
+  "title": "Employee Directory",
+  "description": "Search company employee database with incremental search and copy attributes to clipboard",
+  "icon": "person.png",
+  "author": "employee-directory-dev",
+  "categories": [
+    "Productivity"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "search-employee",
+      "title": "Search Employee",
+      "description": "Search employees by employee ID, name, nickname, or email",
+      "mode": "view",
+      "keywords": [
+        "employee",
+        "staff",
+        "directory",
+        "search",
+        "member"
+      ]
+    },
+    {
+      "name": "sync-employee-data",
+      "title": "Sync Employee Data",
+      "description": "Sync employee data from Google Sheets to local JSON file",
+      "mode": "no-view",
+      "keywords": [
+        "sync",
+        "update",
+        "refresh",
+        "data"
+      ]
+    }
+  ],
+  "preferences": [
+    {
+      "name": "dataSourcePath",
+      "type": "textfield",
+      "required": true,
+      "title": "Data Source Path",
+      "description": "Path to the local JSON file containing employee data",
+      "default": "/Users/dai/work/raycast-extension/employee-data.json"
+    },
+    {
+      "name": "googleSheetsId",
+      "type": "textfield",
+      "required": false,
+      "title": "Google Sheets ID",
+      "description": "Google Sheets ID (extracted from URL) - Optional for local-only usage",
+      "default": ""
+    },
+    {
+      "name": "serviceAccountKeyPath",
+      "type": "textfield",
+      "required": false,
+      "title": "Service Account Key Path",
+      "description": "Path to Google API service account JSON file - Optional for local-only usage",
+      "default": ""
+    },
+    {
+      "name": "autoSyncInterval",
+      "type": "dropdown",
+      "required": false,
+      "title": "Auto Sync Interval",
+      "description": "Automatic synchronization interval",
+      "default": "60",
+      "data": [
+        {
+          "title": "30 minutes",
+          "value": "30"
+        },
+        {
+          "title": "1 hour",
+          "value": "60"
+        },
+        {
+          "title": "2 hours",
+          "value": "120"
+        },
+        {
+          "title": "4 hours",
+          "value": "240"
+        },
+        {
+          "title": "Manual only",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "name": "showInactiveEmployees",
+      "type": "checkbox",
+      "required": false,
+      "title": "Show Inactive Employees",
+      "label": "Show inactive employees",
+      "description": "Display employees who have left the company",
+      "default": false
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.83.1",
+    "fuse.js": "^7.0.0",
+    "googleapis": "^144.0.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^1.0.11",
+    "@types/node": "^20.19.7",
+    "@types/react": "^16.14.60",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "build": "npx @raycast/api@latest build -e dist --skip-typecheck",
+    "dev": "npx @raycast/api@latest develop --skip-typecheck",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}

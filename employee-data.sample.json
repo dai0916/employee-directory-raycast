@@ -1,0 +1,25 @@
+{
+  "employees": [
+    {
+      "employeeId": "EMP001",
+      "nameJa": "山田 太郎",
+      "nameEn": "Taro Yamada",
+      "nickname": "taro",
+      "email": "taro.yamada@company.com",
+      "employmentType": "正社員",
+      "joinDate": "2023-01-01",
+      "status": "active"
+    },
+    {
+      "employeeId": "EMP002", 
+      "nameJa": "佐藤 花子",
+      "nameEn": "Hanako Sato",
+      "nickname": "hanako",
+      "email": "hanako.sato@company.com",
+      "employmentType": "契約社員",
+      "joinDate": "2023-06-01",
+      "status": "active"
+    }
+  ],
+  "lastUpdated": "2025-07-12T00:00:00.000Z"
+}

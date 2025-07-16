@@ -37,7 +37,7 @@ nvm use 22
 npm install
 
 # Raycast CLIのインストール
-npm install -g @raycast/api
+npm install -g @raycast/cli
 ```
 
 #### 3. データファイルの準備
@@ -50,11 +50,8 @@ cp employee-data.sample.json employee-data.json
 #### 4. ビルド
 
 ```bash
-# TypeScriptコンパイル
-npx tsc
-
 # Raycastビルド
-ray build
+npm run build
 ```
 
 #### 5. Raycastへのインポート

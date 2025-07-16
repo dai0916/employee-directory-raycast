@@ -16,7 +16,7 @@ fi
 # Check if Raycast is installed
 if ! command -v ray &> /dev/null; then
     echo "📦 Installing Raycast CLI..."
-    npm install -g @raycast/api
+    npm install -g @raycast/cli
 fi
 
 # Create installation directory
@@ -58,8 +58,7 @@ npm install
 
 # Build the extension
 echo "🔨 Building extension..."
-npx tsc
-ray build
+npm run build
 
 # Setup data file
 echo "📄 Setting up data file..."
@@ -74,9 +73,17 @@ CURRENT_PATH="$PWD"
 if command -v jq &> /dev/null; then
     jq ".preferences[0].default = \"$CURRENT_PATH/employee-data.json\"" package.json > package.tmp.json && mv package.tmp.json package.json
 else
-    # Fallback if jq is not available
-    sed -i.bak "s|/Users/dai/work/raycast-extension/employee-data.json|$CURRENT_PATH/employee-data.json|g" package.json
-    rm -f package.json.bak
+    # Install jq if not available
+    if command -v brew &> /dev/null; then
+        echo "📦 Installing jq..."
+        brew install jq
+        jq ".preferences[0].default = \"$CURRENT_PATH/employee-data.json\"" package.json > package.tmp.json && mv package.tmp.json package.json
+    else
+        # Fallback if jq and brew are not available
+        echo "⚠️  jq not found, using sed fallback"
+        sed -i.bak "s|/Users/dai/work/raycast-extension/employee-data.json|$CURRENT_PATH/employee-data.json|g" package.json
+        rm -f package.json.bak
+    fi
 fi
 
 echo ""

@@ -43,7 +43,7 @@
       "required": true,
       "title": "Data Source Path",
       "description": "Path to the local JSON file containing employee data",
-      "default": "/Users/dai/work/raycast-extension/employee-data.json"
+      "default": "./employee-data.json"
     },
     {
       "name": "googleSheetsId",

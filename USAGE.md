@@ -14,7 +14,7 @@
 4. 以下のように設定：
 
 ```
-Data Source Path: /Users/dai/work/raycast-extension/employee-data.json
+Data Source Path: ./employee-data.json
 Google Sheets ID: （今は空のままでOK）
 Service Account Key Path: （今は空のままでOK）
 Auto Sync Interval: Manual only

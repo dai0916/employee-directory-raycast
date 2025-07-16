@@ -68,7 +68,7 @@ https://docs.google.com/spreadsheets/d/[この部分がスプレッドシートI
 3. 以下を入力：
 
 ```
-Data Source Path: /Users/dai/work/raycast-extension/employee-data.json
+Data Source Path: ./employee-data.json
 Google Sheets ID: [ステップ2.3で取得したID]
 Service Account Key Path: /Users/yourname/google-service-account.json
 Auto Sync Interval: 1 hour

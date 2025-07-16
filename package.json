@@ -112,11 +112,11 @@
     "@types/react": "^16.14.60",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
+    "typescript": "^4.9.5"
   },
   "scripts": {
-    "build": "npx @raycast/api@latest build -e dist --skip-typecheck",
-    "dev": "npx @raycast/api@latest develop --skip-typecheck",
+    "build": "npx @raycast/api@latest build -e dist",
+    "dev": "npx @raycast/api@latest develop",
     "fix-lint": "ray lint --fix",
     "lint": "ray lint",
     "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1",

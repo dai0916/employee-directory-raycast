@@ -11,10 +11,7 @@ import {
 } from "@raycast/api";
 import Fuse from "fuse.js";
 import { Employee, Preferences } from "./types";
-import {
-  loadEmployeeData,
-  shouldSync,
-} from "./utils";
+import { loadEmployeeData, shouldSync } from "./utils";
 import { syncFromGoogleSheets } from "./google-sheets";
 
 export default function SearchEmployee() {
@@ -33,7 +30,7 @@ export default function SearchEmployee() {
       { name: "nameJa", weight: 0.3 },
       { name: "nameEn", weight: 0.3 },
       { name: "nickname", weight: 0.2 },
-      { name: "email", weight: 0.1 }
+      { name: "email", weight: 0.1 },
     ],
     threshold: 0.3,
     includeScore: true,
@@ -64,8 +61,11 @@ export default function SearchEmployee() {
 
       // Check if auto-sync is needed
       const autoSyncInterval = parseInt(preferences.autoSyncInterval);
-      if (shouldSync(preferences.dataSourcePath, autoSyncInterval) && 
-          preferences.googleSheetsId && preferences.serviceAccountKeyPath) {
+      if (
+        shouldSync(preferences.dataSourcePath, autoSyncInterval) &&
+        preferences.googleSheetsId &&
+        preferences.serviceAccountKeyPath
+      ) {
         setLastSyncStatus("Syncing...");
         try {
           await syncFromGoogleSheets();
@@ -88,7 +88,7 @@ export default function SearchEmployee() {
           setLastSyncStatus("Using local data");
         }
       }
-      
+
       const data = loadEmployeeData(preferences.dataSourcePath);
       let filteredData = data.employees;
 
@@ -141,7 +141,7 @@ export default function SearchEmployee() {
       isShowingDetail={!!selectedEmployee}
       onSelectionChange={(id) => {
         if (id) {
-          const employee = filteredEmployees.find(emp => emp.employeeId === id);
+          const employee = filteredEmployees.find((emp) => emp.employeeId === id);
           if (employee) {
             setSelectedEmployee(employee);
           }
@@ -166,9 +166,7 @@ export default function SearchEmployee() {
             ]}
             detail={
               selectedEmployee?.employeeId === employee.employeeId ? (
-                <List.Item.Detail
-                  markdown={generateDetailMarkdown(employee)}
-                />
+                <List.Item.Detail markdown={generateDetailMarkdown(employee)} />
               ) : undefined
             }
             actions={
@@ -180,24 +178,18 @@ export default function SearchEmployee() {
                     icon={Icon.Clipboard}
                   />
                   <Action
-                    title="Copy Employee ID"
-                    onAction={() =>
-                      copyToClipboard(employee.employeeId, "Employee ID")
-                    }
+                    title="Copy Employee Id"
+                    onAction={() => copyToClipboard(employee.employeeId, "Employee ID")}
                     icon={Icon.Clipboard}
                   />
                   <Action
                     title="Copy Japanese Name"
-                    onAction={() =>
-                      copyToClipboard(employee.nameJa, "Japanese Name")
-                    }
+                    onAction={() => copyToClipboard(employee.nameJa, "Japanese Name")}
                     icon={Icon.Clipboard}
                   />
                   <Action
                     title="Copy English Name"
-                    onAction={() =>
-                      copyToClipboard(employee.nameEn, "English Name")
-                    }
+                    onAction={() => copyToClipboard(employee.nameEn, "English Name")}
                     icon={Icon.Clipboard}
                   />
                   <Action

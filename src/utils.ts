@@ -21,29 +21,31 @@ export function loadEmployeeData(filePath: string): EmployeeData {
   try {
     const data = readFileSync(expandedPath, "utf-8");
     const parsedData = JSON.parse(data) as EmployeeData;
-    
+
     // Validate data structure
     if (!parsedData.employees || !Array.isArray(parsedData.employees)) {
       console.error("Invalid employee data structure: missing or invalid employees array");
       return { employees: [] };
     }
-    
+
     // Validate each employee object
     const validEmployees = parsedData.employees.filter((emp, index) => {
-      const requiredFields = ['employeeId', 'nameJa', 'nameEn', 'nickname', 'email'];
-      const missingFields = requiredFields.filter(field => !emp[field as keyof Employee]);
-      
+      const requiredFields = ["employeeId", "nameJa", "nameEn", "email"];
+      const missingFields = requiredFields.filter((field) => !emp[field as keyof Employee]);
+
       if (missingFields.length > 0) {
-        console.warn(`Employee at index ${index} missing required fields: ${missingFields.join(', ')}`);
+        console.warn(
+          `Employee at index ${index} missing required fields: ${missingFields.join(", ")}`
+        );
         return false;
       }
-      
+
       return true;
     });
-    
-    return { 
-      employees: validEmployees, 
-      lastUpdated: parsedData.lastUpdated 
+
+    return {
+      employees: validEmployees,
+      lastUpdated: parsedData.lastUpdated,
     };
   } catch (error) {
     console.error("Error loading employee data:", error);

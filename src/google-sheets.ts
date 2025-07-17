@@ -9,17 +9,19 @@ export async function syncFromGoogleSheets(): Promise<void> {
 
   // Check if Google Sheets configuration is available
   if (!preferences.googleSheetsId || !preferences.serviceAccountKeyPath) {
-    throw new Error("Google Sheets configuration is not set up. Please configure Google Sheets ID and Service Account Key Path in preferences.");
+    throw new Error(
+      "Google Sheets configuration is not set up. Please configure Google Sheets ID and Service Account Key Path in preferences."
+    );
   }
 
   try {
     // Load service account credentials
     const serviceAccountPath = expandPath(preferences.serviceAccountKeyPath);
-    
+
     if (!existsSync(serviceAccountPath)) {
       throw new Error(`Service account key file not found: ${serviceAccountPath}`);
     }
-    
+
     let credentials;
     try {
       const credentialsData = readFileSync(serviceAccountPath, "utf-8");
@@ -64,9 +66,9 @@ export async function syncFromGoogleSheets(): Promise<void> {
           email: row[4] || "",
           employmentType: row[5] || "",
           joinDate: row[6] || "",
-          status: (row[7]?.toLowerCase() === "active"
-            ? "active"
-            : "inactive") as "active" | "inactive",
+          status: (row[7]?.toLowerCase() === "active" ? "active" : "inactive") as
+            | "active"
+            | "inactive",
         };
       })
       .filter((employee): employee is Employee => employee !== null);
